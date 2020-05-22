@@ -2,7 +2,7 @@
 Install
 -------
 
-Clone onto your machine:
+Clone :
 
     git clone git://github.com/codeaholicguy/dotfiles.git
 
