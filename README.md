@@ -1,7 +1,3 @@
-# dotfiles
-A set of `vim`, `zsh`, and `tmux` configuration files for JavaScript Developer who likes to use Vim/NeoVim on macOS.
-
-![Screenshot](screenshot.png)
 
 Install
 -------
@@ -13,7 +9,8 @@ Clone onto your machine:
 Simply run file (maybe you  must run `chmod +x ./install.sh` before run that file):
 
     ./install.sh --macos
-    
+    ./install.sh --ubuntu
+
 In `vim/neovim` run:
 
     :PlugClean
@@ -27,12 +24,5 @@ After, in `vim/neovim` run:
 If you want to get newest version of `vim/neovim` plugin, in `vim/neovim` simply run:
 
     :PlugUpdate
-
-Credit
--------
-
-Thanks to:
-
-https://github.com/dracula/dracula-theme/
 
 
