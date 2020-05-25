@@ -161,6 +161,7 @@ function install_ubuntu {
           sudo apt-get install node
       else
           echo    "installed"
+  fi
   # install npm
   dpkg -s npm &> /dev/null
   if [ $? -ne 0 ]
