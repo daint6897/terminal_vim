@@ -74,68 +74,112 @@ function install_macos {
 
 
 function install_ubuntu {
- 
+
   echo "ubuntu detected"
   sudo apt-get update
 
-  if [ "$(is_installed brew)" == "0" ]; then
-    echo "Installing Homebrew"
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+  # install python
+  dpkg -s python3.6 &> /dev/null
+  if [ $? -ne 0 ]
+      then
+          echo "-----------------------installed python--------------------------------"
+          sudo apt-get update
+          sudo apt-get install python3.6
+
+      else
+          echo    "installed"
   fi
 
-  # if [ $TERM_PROGRAM != "iTerm.app" ]; then
-  #   echo "Installing iTerm2"
-  #   brew tap caskroom/cask
-  #   brew cask install iterm2
-  # fi
-  if [ "$(is_installed python3.6)" == "0" ]; then
-    echo "Installing python3.6"
-    sudo apt-get install python3.6
-  fi
-  if [ "$(is_installed zsh)" == "0" ]; then
-    echo "Installing zsh"
-    sudo apt-get install zsh zsh-completions
+
+  # install zsh
+  dpkg -s zsh &> /dev/null
+  if [ $? -ne 0 ]
+      then
+          echo "-----------------------installed zsh--------------------------------"
+          sudo apt-get update
+          sudo apt-get install zsh
+          sudo apt-get install zsh-completions
+
+      else
+          echo    "installed"
   fi
 
-  if [ "$(is_installed ag)" == "0" ]; then
-    echo "Installing The silver searcher"
-    sudo apt-get install the_silver_searcher
+  # install fzf
+  dpkg -s fzf &> /dev/null
+  if [ $? -ne 0 ]
+      then
+          echo "-----------------------installed fzf--------------------------------"
+          sudo apt-get update
+          sudo apt-get install fzf
+      else
+          echo    "installed"
   fi
 
-  if [ "$(is_installed fzf)" == "0" ]; then
-    echo "Installing fzf"
-    sudo apt-get install fzf
+
+  # install ag
+  dpkg -s ag &> /dev/null
+  if [ $? -ne 0 ]
+      then
+          echo "-----------------------installed ag--------------------------------"
+          sudo apt-get update
+          sudo apt-get install the_silver_searcher
+      else
+          echo    "installed"
+  fi
+  # install tmux
+  dpkg -s tmux &> /dev/null
+  if [ $? -ne 0 ]
+      then
+          echo "-----------------------installed tmux--------------------------------"
+          sudo apt-get update
+          sudo apt-get install tmux
+          echo "Installing reattach-to-user-namespace"
+          sudo apt-get install reattach-to-user-namespace
+          echo "Installing tmux-plugin-manager"
+          git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+      else
+          echo    "installed"
   fi
 
-  if [ "$(is_installed tmux)" == "0" ]; then
-    echo "Installing tmux"
-    sudo apt-get install tmux
-    echo "Installing reattach-to-user-namespace"
-    sudo apt-get install reattach-to-user-namespace
-    echo "Installing tmux-plugin-manager"
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  # install git
+  dpkg -s git &> /dev/null
+  if [ $? -ne 0 ]
+      then
+          echo "-----------------------installed git--------------------------------"
+          sudo apt-get update
+          sudo apt-get install git
+      else
+          echo    "installed"
   fi
-
-  if [ "$(is_installed git)" == "0" ]; then
-    echo "Installing Git"
-    sudo apt-get install git
+  # install node
+  dpkg -s node &> /dev/null
+  if [ $? -ne 0 ]
+      then
+          echo "-----------------------installed node--------------------------------"
+          sudo apt-get update
+          sudo apt-get install node
+      else
+          echo    "installed"
+  # install npm
+  dpkg -s npm &> /dev/null
+  if [ $? -ne 0 ]
+      then
+          echo "-----------------------installed npm--------------------------------"
+          sudo apt-get update
+          sudo apt-get install npm
+      else
+          echo    "installed"
   fi
-
-  if [ "$(is_installed node)" == "0" ]; then
-    echo "Installing Node"
-    sudo apt-get install node
-  fi
-  if [ "$(is_installed npm)" == "0" ]; then
-    echo "Installing npm"
-    sudo apt-get install npm
-  fi
-
-  if [ "$(is_installed nvim)" == "0" ]; then
-    echo "Install neovim"
-    sudo apt-get install neovim
-    if [ "$(is_installed pip3)" == "1" ]; then
-      pip3 install neovim --upgrade
-    fi
+  # install nvim
+  dpkg -s nvim &> /dev/null
+  if [ $? -ne 0 ]
+      then
+          echo "-----------------------installed nvim--------------------------------"
+          sudo apt-get update
+          sudo apt-get install nvim
+      else
+          echo    "installed"
   fi
 }
 
