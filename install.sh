@@ -178,7 +178,7 @@ function install_ubuntu {
       then
           echo "-----------------------installed nvim--------------------------------"
           sudo apt-get update
-          sudo apt-get install nvim
+          sudo apt-get install neovim
       else
           echo    "installed"
   fi
