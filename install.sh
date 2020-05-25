@@ -74,9 +74,7 @@ function install_macos {
 
 
 function install_ubuntu {
-  if [[ $OSTYPE != darwin* ]]; then
-    return
-  fi
+ 
   echo "ubuntu detected"
   sudo apt-get update
 
